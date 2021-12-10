@@ -12,7 +12,7 @@
         android:icon="@drawable/ic_home"
         />
     <item
-        android:id="@+id/rightFragment"
+        android:id="@+id/searchFragment"
         android:title="Right"
         android:icon="@drawable/ic_right"
         />

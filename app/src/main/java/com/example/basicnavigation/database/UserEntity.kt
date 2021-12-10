@@ -7,10 +7,9 @@ import androidx.room.PrimaryKey
 data class UserEntity(
     @PrimaryKey val id: Int,
     val username: String
+
 )
 
-fun UserEntity.toUser() = User(
-    id, username
+fun  UserEntity.toUser() = User(
+    id,username
 )
-
-
