@@ -7,18 +7,27 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.isVisible
+import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.NavHostFragment
 import com.android.volley.RequestQueue
 import com.android.volley.Response
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
 import com.example.basicnavigation.R
+import com.example.basicnavigation.databasepokemon.Guardar
+import com.example.basicnavigation.databasepokemon.Pokemon
 import com.example.basicnavigation.databinding.FragmentSearchBinding
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
 import org.json.JSONObject
 
 class SearchFragment : Fragment() {
 
     private lateinit var queve: RequestQueue
     private lateinit var binding: FragmentSearchBinding
+    private lateinit var database: DatabaseReference
+    private val guardar : Guardar by viewModels()
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -34,9 +43,9 @@ class SearchFragment : Fragment() {
          }
         binding.btnGuardarPokemon.setOnClickListener {
             guardarPokemon()
-            //actualizarPerfil()
-            //val destination= PrincipalFragmentDirections.actionPrincipalFragmentToRightFragment()
-            //NavHostFragment.findNavController(this).navigate(destination)
+            IngrementarPokemon()
+            val destination= SearchFragmentDirections.actionSearchFragmentToPokedexFragment()
+            NavHostFragment.findNavController(this).navigate(destination)
         }
 
 
@@ -99,6 +108,21 @@ class SearchFragment : Fragment() {
     }
     fun guardarPokemon(){
 
+        guardar.save(
+            Pokemon(
+                binding.tvPokemonId.text.toString(),
+                binding.tvPokemonName.text.toString(),
+                binding.tvPokemonTipo.text.toString(),
+                binding.tvPokemonHp.text.toString(),
+                binding.tvPokemonVelocidad.text.toString(),
+                binding.tvPokemonPeso.text.toString(),
+                binding.tvPokemonAtaque.text.toString(),
+                binding.tvPokemonDefensa.text.toString()
+
+        )
+        )
+
+
         Log.d("GUARDADO","Se guardo pokemon ")
 
     }
@@ -106,6 +130,28 @@ class SearchFragment : Fragment() {
     override fun onStop() {
         super.onStop()
         queve.cancelAll("stopped")
+    }
+
+
+
+    private fun IngrementarPokemon(){
+        val myDB= FirebaseDatabase.getInstance()
+        database=myDB.reference
+        var pokemon:Int=0
+        database.child("usuarios").child("001").get().addOnSuccessListener { record ->
+            if (record.exists()) {
+                val json = JSONObject(record.value.toString())
+                pokemon=json.getInt("numPokemon")
+                val contar= hashMapOf<String, Any>(
+                    "/usuarios/1/pokemon" to pokemon+1
+                )
+                database.updateChildren(contar)
+            }else{
+                Log.d("Fallo", "No se incrementó")
+            }
+        }
+
+
     }
 
 }

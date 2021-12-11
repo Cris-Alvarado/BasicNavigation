@@ -5,6 +5,7 @@
     android:id="@+id/frameLayout5"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/pokedex3"
     tools:context=".ui.pokedex.PokedexFragment">
 
     <EditText
@@ -28,30 +29,28 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/tvIdPokemon"
+    <androidx.recyclerview.widget.RecyclerView
+        android:visibility="visible"
+        android:id="@+id/rv_pokemon_entries"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_margin="10dp"
-        android:padding="10dp"
-        android:text="Ingresa tu Id y para ver tu Pokedex"
-        android:textColor="@color/black"
-        android:textSize="16sp"
+        android:layout_marginTop="10dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/etIdUser" />
+        app:layout_constraintTop_toBottomOf="@id/etIdUser"
+        app:layout_constraintBottom_toTopOf="@id/espacio"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        tools:listitem="@layout/item_user" />
+    <TextView
+        android:id="@+id/espacio"
+        android:layout_width="wrap_content"
+        android:layout_height="55dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/rv_pokemon_entries"
+        app:layout_constraintBottom_toBottomOf="parent"
 
-    <TextView
-        android:id="@+id/tvNombrePokemon"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_margin="10dp"
-        android:padding="10dp"
-        android:textColor="@color/black"
-        android:textSize="16sp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvIdPokemon" />
+        />
 
 
 

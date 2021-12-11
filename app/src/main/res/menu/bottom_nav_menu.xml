@@ -2,7 +2,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/leftFragment"
+        android:id="@+id/pokedexFragment"
         android:title="Pokedex"
         android:icon="@drawable/ic_pokedex"
         />

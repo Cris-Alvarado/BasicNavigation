@@ -1,4 +1,4 @@
-package com.example.basicnavigation.database
+package com.example.basicnavigation.databasepokemon
 
 import android.content.Context
 import androidx.room.Room
