@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "230500541978",
+    "project_id": "moviles-proyecto-2021",
+    "storage_bucket": "moviles-proyecto-2021.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:230500541978:android:20b775594de907f9b753a3",
+        "android_client_info": {
+          "package_name": "com.example.basicnavigation"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "230500541978-nuk11o94c36mgqs8mrpon9al4uvuoicf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB5gApnEaGSKmQcxVktGTmqn78p0R9ipUs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "230500541978-nuk11o94c36mgqs8mrpon9al4uvuoicf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

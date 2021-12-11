@@ -3,17 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/homeFragment">
+    app:startDestination="@id/perfilFragment">
 
-    <fragment
-        android:id="@+id/homeFragment"
-        android:name="com.example.basicnavigation.fragments.HomeFragment"
-        android:label="fragment_home"
-        tools:layout="@layout/fragment_home" >
-        <action
-            android:id="@+id/action_homeFragment_to_destinationFragment"
-            app:destination="@id/destinationFragment" />
-    </fragment>
     <fragment
         android:id="@+id/leftFragment"
         android:name="com.example.basicnavigation.fragments.LeftFragment"
@@ -38,4 +29,9 @@
         android:name="com.example.basicnavigation.ui.buscar.SearchFragment"
         android:label="fragment_search"
         tools:layout="@layout/fragment_search" />
+    <fragment
+        android:id="@+id/perfilFragment"
+        android:name="com.example.basicnavigation.ui.perfil.PerfilFragment"
+        android:label="fragment_perfil"
+        tools:layout="@layout/fragment_perfil" />
 </navigation>
