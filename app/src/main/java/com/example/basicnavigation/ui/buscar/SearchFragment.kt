@@ -132,26 +132,17 @@ class SearchFragment : Fragment() {
         queve.cancelAll("stopped")
     }
 
-
-
     private fun IngrementarPokemon(){
         val myDB= FirebaseDatabase.getInstance()
         database=myDB.reference
         var pokemon:Int=0
         database.child("usuarios").child("001").get().addOnSuccessListener { record ->
-            if (record.exists()) {
                 val json = JSONObject(record.value.toString())
                 pokemon=json.getInt("numPokemon")
                 val contar= hashMapOf<String, Any>(
-                    "/usuarios/1/pokemon" to pokemon+1
+                    "/usuarios/001/pokemon" to pokemon+1
                 )
                 database.updateChildren(contar)
-            }else{
-                Log.d("Fallo", "No se incrementó")
-            }
         }
-
-
     }
-
 }
